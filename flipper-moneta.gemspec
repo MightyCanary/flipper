@@ -1,5 +1,4 @@
-# -*- encoding: utf-8 -*-
-require File.expand_path('../lib/flipper/version', __FILE__)
+require File.expand_path('lib/flipper/version', __dir__)
 
 flipper_moneta_files = lambda do |file|
   file =~ /moneta/
@@ -13,11 +12,11 @@ Gem::Specification.new do |gem|
   gem.homepage      = 'https://github.com/jnunemaker/flipper'
 
   gem.files         = `git ls-files`.split("\n").select(&flipper_moneta_files) + ['lib/flipper/version.rb']
-  gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n").select(&flipper_moneta_files)
   gem.name          = 'flipper-moneta'
   gem.require_paths = ['lib']
   gem.version       = Flipper::VERSION
 
   gem.add_dependency 'flipper', "~> #{Flipper::VERSION}"
-  gem.add_dependency 'moneta', '>= 0.7.0', '< 1.2'
+  gem.add_dependency 'moneta', '>= 0.7.0', '< 1.6'
+  gem.metadata['rubygems_mfa_required'] = 'true'
 end
